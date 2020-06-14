@@ -21,7 +21,6 @@ public class Principal {
 		String dirWin = "C:\\Windows";
 		String path = "C:\\TEMP\\RelatorioArquivo";
 		String nome = "relatorio.txt";
-		String nome2 = "relatorio.csv";
 		
 		try {
 			arqCont.LerDiretorio(path);

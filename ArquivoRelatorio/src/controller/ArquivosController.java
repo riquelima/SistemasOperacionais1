@@ -16,7 +16,7 @@ import javax.imageio.IIOException;
 import javax.swing.JOptionPane;
 
 public class ArquivosController implements IArquivosController {
-
+	public String texto = " ";
 	private int id;
 
 	public ArquivosController() {
@@ -49,9 +49,11 @@ public class ArquivosController implements IArquivosController {
 			BufferedReader buffer = new BufferedReader(leitor);
 			String linha = buffer.readLine();
 			while (linha != null) { // procurando End of File
+				texto = linha;
 				System.out.println(linha);
 				linha = buffer.readLine();
 			}
+			System.out.println(texto);
 			buffer.close();
 			leitor.close();
 			fluxo.close();
@@ -65,14 +67,14 @@ public class ArquivosController implements IArquivosController {
 	@Override
 	public void CopiaArquivo(String path, String nome) throws IOException {
 		File dir = new File(path);
-		File arq = new File(path, nome);
+		File arq = new File(path, "arquivo.csv");
 
 		if (dir.exists() && dir.isDirectory()) {
 			boolean existe = false;
 			if (arq.exists()) {
 				existe = true;
 			}
-			String conteudo = geraTxt();
+			String conteudo = texto;
 			FileWriter fileWriter = new FileWriter(arq, existe);
 			PrintWriter print = new PrintWriter(fileWriter);
 			print.write(conteudo); // escreve o conteudo
@@ -85,11 +87,13 @@ public class ArquivosController implements IArquivosController {
 
 	}
 
-	private String geraTxt() {
+	/*private String geraTxt() {
 		StringBuffer buffer = new StringBuffer();
 		System.out.println(" --------------- NOVO ARQUIVO CRIADO ----------------");
 
 		return buffer.toString();
+	
 	}
+		*/
 	
 }
