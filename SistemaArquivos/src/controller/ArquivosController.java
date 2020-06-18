@@ -87,7 +87,8 @@ public class ArquivosController implements IArquivosController {
 		}
 
 	}
-
+	
+	// --------------------- INSERE INFORMAÇÕES NA TABELA ----------------------
 	@Override
 	public void insereCadastro(String arquivo, int codigo, String nome, String email) throws IOException {
 		File arq = new File("C://TEMP", arquivo);
